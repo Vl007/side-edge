@@ -1,16 +1,13 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 
-Injectable({
+@Injectable({
   providedIn: 'root'
 })
-
 export class DataService {
 
-  constructor(private httpClient: HttpClient) {
-
-  }
+  constructor(private httpClient: HttpClient) { }
 
   loadData() {
     this.httpClient.get('http://jsteam.sibedge.com/raw/task/users.json')
