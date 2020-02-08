@@ -15,7 +15,7 @@ export class DataService {
   loadData() {
     this.httpClient.get('http://jsteam.sibedge.com/raw/task/users.json')
       .pipe(
-        map(data => data.results)
+        map((data: any) => data.results)
       );
   }
 }
