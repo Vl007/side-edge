@@ -10,7 +10,7 @@ export class DataService {
   constructor(private httpClient: HttpClient) { }
 
   loadData() {
-    this.httpClient.get('http://jsteam.sibedge.com/raw/task/users.json')
+    return this.httpClient.get('/raw/task/users.json')
       .pipe(
         map((data: any) => data.results)
       );

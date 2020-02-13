@@ -1,7 +1,8 @@
 {
-  "/api/*": {
-      "target": "http://jsteam.sibedge.com/raw/task/users.json",
-      "secure": false,
-      "logLevel": "debug"
+  "/raw/*": {
+    "target": "http://jsteam.sibedge.com",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
   }
 }
