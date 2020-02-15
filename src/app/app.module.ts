@@ -4,10 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
 import {MatInputModule} from '@angular/material/input';
-import {DataService} from './services/data.service';
 import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
@@ -19,8 +18,8 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserAnimationsModule,
     HttpClientModule,
     MatTableModule,
-    MatPaginator,
-    MatSort,
+    MatPaginatorModule,
+    MatSortModule,
     MatInputModule
   ],
   providers: [],
