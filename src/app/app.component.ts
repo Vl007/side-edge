@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {DataService} from './services/data.service';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
+
 import {Observable} from 'rxjs';
 import {User} from './models/user';
 import {tap} from 'rxjs/operators';
@@ -18,7 +19,7 @@ export class AppComponent implements OnInit {
   users$: Observable<User>;
 
   constructor(private data: DataService) {
-
+   
   }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
