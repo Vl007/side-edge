@@ -4,8 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
-import {MatInputModule} from '@angular/material/input';
 import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
+import {MatInputModule} from '@angular/material/input';
 import {DataService} from './services/data.service';
 import {HttpClientModule} from '@angular/common/http';
 
@@ -19,6 +20,7 @@ import {HttpClientModule} from '@angular/common/http';
     HttpClientModule,
     MatTableModule,
     MatPaginator,
+    MatSort,
     MatInputModule
   ],
   providers: [],
