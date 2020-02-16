@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
 
   resultLength: number;
   users: User[];
-  pageSize = 5;
+  pageSize = 10;
 
   constructor(private data: DataService) {
 
