@@ -3,9 +3,7 @@ import {DataService} from './services/data.service';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 
-import {Observable} from 'rxjs';
 import {User} from './models/user';
-import {filter, tap} from 'rxjs/operators';
 import {QueryResult} from './models/query-result';
 
 @Component({
@@ -47,13 +45,13 @@ export class AppComponent implements OnInit {
         }
 
         if (this.filterPhone && this.filterPhone.length > 0) {
-          filteredResult = data.results.filter(row => {
+          filteredResult = filteredResult.filter(row => {
             return row.phone.indexOf(this.filterPhone) >= 0;
           });
         }
 
         if (this.filterCity && this.filterCity.length > 0) {
-          filteredResult = data.results.filter(row => {
+          filteredResult = filteredResult.filter(row => {
             return row.location.city.indexOf(this.filterCity) >= 0;
           });
         }
