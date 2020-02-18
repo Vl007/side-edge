@@ -1,7 +1,7 @@
 <div class="example-header">
   <mat-form-field appearance="fill">
     <mat-label>Surname</mat-label>
-    <input matInput>
+    <input matInput [(ngModel)]="filterSurname" (ngModelChange)="filterData()" type="text">
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Phone</mat-label>

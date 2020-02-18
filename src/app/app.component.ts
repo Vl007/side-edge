@@ -5,7 +5,7 @@ import {MatSort} from '@angular/material/sort';
 
 import {Observable} from 'rxjs';
 import {User} from './models/user';
-import {tap} from 'rxjs/operators';
+import {filter, tap} from 'rxjs/operators';
 import {QueryResult} from './models/query-result';
 
 @Component({
@@ -21,6 +21,8 @@ export class AppComponent implements OnInit {
   users: User[];
   pageSize = 10;
 
+  filterSurname: string;
+
   constructor(private data: DataService) {
 
   }
@@ -32,16 +34,27 @@ export class AppComponent implements OnInit {
     this.loadData(this.pageSize, 0);
   }
 
-  loadData(pageSize: number, pageIndex: number) {
+  loadData(pageSize: number, pageIndex: number, filterSurname?) {
     this.data.loadData()
       .subscribe((data: QueryResult) => {
+        let filteredResult = data.results;
+        if (this.filterSurname && this.filterSurname.length > 0) {
+          filteredResult = data.results.filter(row => {
+            return row.name.last.indexOf(this.filterSurname) >= 0;
+          });
+        }
+
         const start = pageIndex * pageSize;
-        this.users = data.results.slice(start, start + pageSize);
+        this.users = filteredResult.slice(start, start + pageSize);
         this.resultLength = data.info.results;
       });
   }
 
   onChangePageOrSize(event: PageEvent) {
     this.loadData(event.pageSize, event.pageIndex);
+  }
+
+  filterData() {
+    this.loadData(this.pageSize, 0);
   }
 }
