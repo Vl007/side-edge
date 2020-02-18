@@ -22,6 +22,8 @@ export class AppComponent implements OnInit {
   pageSize = 10;
 
   filterSurname: string;
+  filterPhone: string;
+  filterCity: string;
 
   constructor(private data: DataService) {
 
@@ -34,7 +36,7 @@ export class AppComponent implements OnInit {
     this.loadData(this.pageSize, 0);
   }
 
-  loadData(pageSize: number, pageIndex: number, filterSurname?) {
+  loadData(pageSize: number, pageIndex: number, filterSurname?, filterPhone?, filterCity?) {
     this.data.loadData()
       .subscribe((data: QueryResult) => {
         let filteredResult = data.results;
@@ -43,6 +45,19 @@ export class AppComponent implements OnInit {
             return row.name.last.indexOf(this.filterSurname) >= 0;
           });
         }
+
+        if (this.filterPhone && this.filterPhone.length > 0) {
+          filteredResult = data.results.filter(row => {
+            return row.phone.indexOf(this.filterPhone) >= 0;
+          });
+        }
+
+        if (this.filterCity && this.filterCity.length > 0) {
+          filteredResult = data.results.filter(row => {
+            return row.location.city.indexOf(this.filterCity) >= 0;
+          });
+        }
+
 
         const start = pageIndex * pageSize;
         this.users = filteredResult.slice(start, start + pageSize);

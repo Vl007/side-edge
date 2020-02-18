@@ -5,11 +5,11 @@
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Phone</mat-label>
-    <input matInput>
+    <input matInput [(ngModel)]="filterPhone" (ngModelChange)="filterData()" type="text">
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>City</mat-label>
-    <input matInput>
+    <input matInput [(ngModel)]="filterCity" (ngModelChange)="filterData()" type="text">
   </mat-form-field>
   <div class="date">
     <mat-form-field appearance="fill">
