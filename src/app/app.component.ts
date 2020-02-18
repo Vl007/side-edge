@@ -2,7 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {DataService} from './services/data.service';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
-
+import {MatCalendar} from '@angular/material/datepicker';
+import {DateAdapter, MAT_DATE_FORMATS, MatDateFormats} from '@angular/material/core';
 import {User} from './models/user';
 import {QueryResult} from './models/query-result';
 
