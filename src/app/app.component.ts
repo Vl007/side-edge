@@ -59,7 +59,7 @@ export class AppComponent implements OnInit {
 
         const start = pageIndex * pageSize;
         this.users = filteredResult.slice(start, start + pageSize);
-        this.resultLength = data.info.results;
+        this.resultLength = filteredResult.length || data.info.results;
       });
   }
 
