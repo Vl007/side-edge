@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   pageSize = 10;
 
   filterSurname: string;
-  filterPhone: string;
+  filterPhone: number;
   filterCity: string;
 
   constructor(private data: DataService) {
@@ -44,9 +44,9 @@ export class AppComponent implements OnInit {
           });
         }
 
-        if (this.filterPhone && this.filterPhone.length > 0) {
+        if (this.filterPhone && this.filterPhone.toString().length > 0) {
           filteredResult = filteredResult.filter(row => {
-            return row.phone.indexOf(this.filterPhone) >= 0;
+            return row.phone.indexOf(this.filterPhone.toString()) >= 0;
           });
         }
 
