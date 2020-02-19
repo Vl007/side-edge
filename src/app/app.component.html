@@ -14,17 +14,17 @@
   <div class="date">
     <mat-form-field appearance="fill">
       <mat-label>Date of birth from</mat-label>
-      <input matInput [matDatepicker]="picker">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+      <input matInput [matDatepicker]="dateFrom">
+      <mat-datepicker-toggle matSuffix [for]="dateFrom"></mat-datepicker-toggle>
+      <mat-datepicker #dateFrom></mat-datepicker>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Date of birth before</mat-label>
-      <input matInput [matDatepicker]="picker">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+      <input matInput [matDatepicker]="dateTo">
+      <mat-datepicker-toggle matSuffix [for]="dateTo"></mat-datepicker-toggle>
+      <mat-datepicker #dateTo></mat-datepicker>
     </mat-form-field>
-    <button class="reset">Reset</button>
+    <button class="reset" (click)="reset()">Reset</button>
   </div>
 </div>
 

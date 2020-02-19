@@ -2,7 +2,6 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {DataService} from './services/data.service';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
-import {MatCalendarCellCssClasses} from '@angular/material/datepicker';
 import {User} from './models/user';
 import {QueryResult} from './models/query-result';
 
@@ -71,13 +70,12 @@ export class AppComponent implements OnInit {
   filterData() {
     this.loadData(this.pageSize, 0);
   }
-}
 
-export class DatepickerDateClassExample {
-  dateClass = (d: Date): MatCalendarCellCssClasses => {
-    const date = d.getDate();
-
-    // Highlight the 1st and 20th day of each month.
-    return (date === 1 || date === 20) ? 'example-custom-date-class' : '';
+  reset() {
+    this.filterSurname = '';
+    this.filterCity = '';
+    this.filterPhone = null;
+    this.loadData(this.pageSize, 0);
   }
+
 }
