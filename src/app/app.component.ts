@@ -4,11 +4,33 @@ import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {User} from './models/user';
 import {QueryResult} from './models/query-result';
+import * as moment from 'moment';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import {MomentDateAdapter} from '@angular/material-moment-adapter';
+
+
+export const DATE_FORMAT = {
+  parse: {
+    dateInput: 'DD.MM.YYYY',
+  },
+  display: {
+    dateInput: 'DD.MM.YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [
+
+    {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
+
+    {provide: MAT_DATE_FORMATS, useValue: DATE_FORMAT},
+  ]
 })
 export class AppComponent implements OnInit {
   // tslint:disable-next-line:max-line-length
@@ -21,6 +43,8 @@ export class AppComponent implements OnInit {
   filterSurname: string;
   filterPhone: number;
   filterCity: string;
+  birthFrom: Date;
+  birthTo: Date;
 
   constructor(private data: DataService) {
 
@@ -55,6 +79,17 @@ export class AppComponent implements OnInit {
           });
         }
 
+        if (this.birthFrom) {
+          filteredResult = filteredResult.filter(row => {
+            return moment(this.birthFrom).isBefore(moment(row.dob));
+          });
+        }
+
+        if (this.birthTo) {
+          filteredResult = filteredResult.filter(row => {
+            return moment(this.birthTo).isAfter(moment(row.dob));
+          });
+        }
 
         const start = pageIndex * pageSize;
         this.users = filteredResult.slice(start, start + pageSize);
@@ -75,6 +110,8 @@ export class AppComponent implements OnInit {
     this.filterSurname = '';
     this.filterCity = '';
     this.filterPhone = null;
+    this.birthFrom = null;
+    this.birthTo = null;
     this.loadData(this.pageSize, 0);
   }
 
