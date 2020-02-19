@@ -11,6 +11,7 @@ import {MatInputModule} from '@angular/material/input';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {MatIconModule} from '@angular/material/icon';
     FormsModule,
     HttpClientModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
