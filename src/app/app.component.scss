@@ -1,13 +1,13 @@
 .example-container {
   display: flex;
   flex-direction: column;
-  min-width: 300px;
-  margin-bottom: 35px;
+  width: 1490px;
+  margin: auto;
 }
 
 .example-header {
   min-height: 64px;
-  padding: 8px 24px 0;
+  padding: 8px 7px 0;
   display: flex;
   flex-wrap: wrap;
   width: 800px;
@@ -52,7 +52,6 @@
   // left: 491px;
   margin-top: 9px;
   margin-left: 9px;
-  margin-left: 6px;
   background-image: url(../assets/images/reset-filter.png);
   width: 37px;
   background-repeat: no-repeat;
